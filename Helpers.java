@@ -1,4 +1,7 @@
-public class Logos {
+import java.util.InputMismatchException;
+import java.util.Scanner;
+
+public class Helpers {
     public void printLogo() {
         
         // Função que imprime o logo do programa com fonte ASCII
@@ -36,5 +39,41 @@ public class Logos {
                 "| $$  | $$| $$| $$      | $$  \\ $$| $$  | $$| $$  \\ $$                    | $$     | $$      | $$  | $$\r\n" + //
                 "| $$  | $$| $$| $$      | $$$$$$$/| $$  | $$| $$$$$$$/                    | $$     | $$      |  $$$$$$/\r\n" + //
                 "|__/  |__/|__/|__/      |_______/ |__/  |__/|_______/                     |__/     |__/       \\______/ \n");
+    }
+
+    public int getInt() {
+            // Função que retorna um inteiro digitado pelo usuário
+            Scanner sc = new Scanner(System.in);
+            int num = 0;
+            boolean erro = false;
+            do {
+                try {
+                    num = sc.nextInt();
+                    erro = false;
+                } catch (InputMismatchException e) {
+                    System.out.print("Entrada inválida! Digite novamente: ");
+                    erro = true;
+                    sc.nextLine();
+                }
+            } while (erro);
+            return num;
+    }
+
+    public double getDouble() {
+        // Função que retorna um double digitado pelo usuário
+        Scanner sc = new Scanner(System.in);
+        double num = 0;
+        boolean erro = false;
+        do {
+            try {
+                num = sc.nextDouble();
+                erro = false;
+            } catch (InputMismatchException e) {
+                System.out.print("Entrada inválida! Digite novamente: ");
+                erro = true;
+                sc.nextLine();
+            }
+        } while (erro);
+        return num;
     }
 }

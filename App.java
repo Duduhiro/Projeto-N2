@@ -3,7 +3,7 @@ import java.util.Scanner;
 
 public class App {
     private static int id = 3; // Variável usada pra manter controle sobre os ids das propriedades
-    static Logos logos = new Logos(); // Objeto usado para imprimir os logos do programa
+    static Helpers helpers = new Helpers(); // Objeto usado para imprimir os logos do programa
     
     public static void main(String[] args) {
         ArrayList<Usuario> usuarios = new ArrayList<>();
@@ -44,11 +44,10 @@ public class App {
         Scanner sc = new Scanner(System.in);
         int opcao = 0;
         while (opcao != 5) {
-            logos.printLogo();
+            helpers.printLogo();
             System.out.println("1 - Login de usuário\n2 - Cadastro de usuário\n3 - Login de proprietário\n4 - Cadastro de proprietário\n5 - Sair\n");
             System.out.print("Escolha uma opção: ");
-            opcao = sc.nextInt();
-            sc.nextLine();
+            opcao = helpers.getInt();
             
             String nome, email, senha;
 
@@ -183,10 +182,10 @@ public class App {
         MenuUsuario menu = new MenuUsuario();
         int escolha = 0;
         while (escolha != 5) {
-            logos.printUser();
+            helpers.printUser();
             System.out.println("Bem-vindo, " + usuario.getNome() + "!\n");
             System.out.print("1- Consultar propriedades\n2- Criar reserva\n3- Exibir reservas\n4- Avaliar propriedades\n5- Sair\nEscolha uma opção: ");
-            escolha  = sc.nextInt();
+            escolha  = helpers.getInt();
             sc.nextLine();
             switch (escolha) {
                 case 1:
@@ -225,10 +224,10 @@ public class App {
         MenuProprietario menu = new MenuProprietario();
         int escolha = 0;
         while (escolha != 4) {
-            logos.printProp();
+            helpers.printProp();
             System.out.println("Bem-vindo, " + proprietario.getNome() + "!\n");
             System.out.print("1- Cadastrar propriedades\n2- Exibir propriedades\n3- Sair\nEscolha uma opção: ");
-            escolha  = sc.nextInt();
+            escolha  = helpers.getInt();
             sc.nextLine();
             switch (escolha) {
                 case 1:
@@ -239,11 +238,11 @@ public class App {
                     System.out.print("Localização da propriedade: ");
                     String localizacao = sc.nextLine();
                     System.out.print("Capacidade da propriedade: ");
-                    int capacidade = sc.nextInt();
+                    int capacidade = helpers.getInt();
                     sc.nextLine();
                     while (capacidade <= 0) {
                         System.out.print("Capacidade inválida! Digite novamente: ");
-                        capacidade = sc.nextInt();
+                        capacidade = helpers.getInt();
                         sc.nextLine();
                     }
                     System.out.print("Preço por noite da propriedade: ");

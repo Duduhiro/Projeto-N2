@@ -65,7 +65,8 @@ public class App {
                         menuUsuario(usuarioLogado, propriedades);
                     } else {
                         System.out.println("Email ou senha inválidos!\n");
-                        wait(1500);
+                        System.out.println("Pressione enter para continuar...");
+                        sc.nextLine();
                     }
                     break;
 
@@ -79,6 +80,8 @@ public class App {
                     System.out.print("Digite sua senha: ");
                     senha = sc.nextLine();
                     cadastrarUsuario(usuarios, nome, email, senha);
+                    System.out.println("Pressino enter para continuar...");
+                    sc.nextLine();
                     break;
                 case 3:
                     System.out.print("Digite seu email: ");
@@ -90,7 +93,8 @@ public class App {
                         menuProprietario(propritarioLogado, propriedades);
                     } else {
                         System.out.println("Email ou senha inválidos!\n");
-                        wait(1500);
+                        System.out.println("Pressione enter para continuar...");
+                        sc.nextLine();
                     }
                     break;
 
@@ -104,6 +108,8 @@ public class App {
                     System.out.print("Digite sua senha: ");
                     senha = sc.nextLine();
                     cadastrarProprietario(proprietarios, nome, email, senha);
+                    System.out.println("Pressino enter para continuar...");
+                    sc.nextLine();
                     break;    
 
                 case 5:
@@ -124,20 +130,17 @@ public class App {
         // Método usado para cadastrar um usuário
         if (!verificaEmail(email)) {
             System.out.println("Email inválido!\n");
-            wait(1500);
             return;
         }
         for (Usuario usuario : usuarios) {
             if (usuario.getEmail().equals(email)) {
                 System.out.println("Email já cadastrado!\n");
-                wait(1500);
                 return;
             }
         }
         Usuario usuario = new Usuario(nome, email, senha);
         usuarios.add(usuario);
         System.out.println("Usuário cadastrado com sucesso!\n");
-        wait(1500);
     }
 
     public static boolean verificaEmail(String email) {
@@ -151,18 +154,20 @@ public class App {
 
     public static void cadastrarProprietario(ArrayList<Proprietario> proprietarios , String nome, String email, String senha) {
         
-        // Método usado para cadastrar um proprietário
+        // Método usado para cadastrar um proprietário]
+        if (!verificaEmail(email)) {
+            System.out.println("Email inválido!\n");
+            return;
+        }
         for (Proprietario proprietario : proprietarios) {
             if (proprietario.getEmail().equals(email)) {
                 System.out.println("Email já cadastrado!\n");
-                wait(1500);
                 return;
             }
         }
         Proprietario proprietario = new Proprietario(nome, email, senha);
         proprietarios.add(proprietario);
         System.out.println("Proprietário cadastrado com sucesso!\n");
-        wait(1500);
     }
 
 
@@ -231,6 +236,7 @@ public class App {
         sc.close();
     }
 
+
     public static void menuProprietario(Proprietario proprietario, ArrayList<Propriedade> propriedades) {
         
         // Método usado para exibir o menu do proprietário
@@ -289,15 +295,5 @@ public class App {
         sc.close();
     }
 
-
-    public static void wait(int ms) {
-        
-        // Método usado para fazer o programa esperar um tempo em milissegundos
-        try {
-            Thread.sleep(ms);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-    }
 
 }

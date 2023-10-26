@@ -31,7 +31,6 @@ public class MenuUsuario {
         Scanner sc = new Scanner(System.in);
         System.out.print("Digite o ID da propriedade: ");
         int id = helpers.getInt();
-        sc.nextLine();
         int index = 0;
         boolean achado = false;
         for (Propriedade propriedade : propriedades) {
@@ -60,7 +59,6 @@ public class MenuUsuario {
         
         System.out.print("Noites: ");
         int noites = helpers.getInt();
-        sc.nextLine();
 
         Reserva reserva = new Reserva(propriedades.get(index), usuario, noites);
         System.out.println("Preço total: R$" + reserva.getPrecoTotal() + "\n");
@@ -101,7 +99,6 @@ public class MenuUsuario {
         while (id != -1) {
             System.out.print("Digite o ID da propriedade que deseja avaliar ou digite \"-1\" para sair: ");
             id = helpers.getInt();
-            sc.nextLine();
             if (id == -1) {
                 break;
             }
@@ -114,7 +111,6 @@ public class MenuUsuario {
                     int nota = 0;
                     while (nota < 1 || nota > 5) {
                         nota = helpers.getInt();
-                        sc.nextLine();
                         if (nota < 1 || nota > 5) {
                             System.out.print("Nota inválida! Digite novamente: ");
                         }

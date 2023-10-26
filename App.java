@@ -1,5 +1,7 @@
 import java.util.ArrayList;
 import java.util.Scanner;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class App {
     private static int id = 3; // Variável usada pra manter controle sobre os ids das propriedades
@@ -120,6 +122,11 @@ public class App {
     public static void cadastrarUsuario(ArrayList<Usuario> usuarios , String nome, String email, String senha) {
         
         // Método usado para cadastrar um usuário
+        if (!verificaEmail(email)) {
+            System.out.println("Email inválido!\n");
+            wait(1500);
+            return;
+        }
         for (Usuario usuario : usuarios) {
             if (usuario.getEmail().equals(email)) {
                 System.out.println("Email já cadastrado!\n");
@@ -133,6 +140,12 @@ public class App {
         wait(1500);
     }
 
+    public static boolean verificaEmail(String email) {
+        Pattern pattern = Pattern.compile("^[\\w-\\.]+@([\\w-]+\\.)+[\\w-]{2,4}$"); // Regex para verificar se o email é válido
+        Matcher matcher = pattern.matcher(email);
+        boolean match = matcher.find();
+        return match;
+    }
 
     public static void cadastrarProprietario(ArrayList<Proprietario> proprietarios , String nome, String email, String senha) {
         

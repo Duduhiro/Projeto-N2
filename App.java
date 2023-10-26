@@ -23,7 +23,7 @@ public class App {
         usuarios.add(usuario1);
         Usuario usuario2 = new Usuario("Maria", "maria@gmail.com", "456");
         usuarios.add(usuario2);
-
+        
         Proprietario proprietario1 = new Proprietario("Paulo", "paulo@uol.com", "abc");
         proprietarios.add(proprietario1);
         Proprietario proprietario2 = new Proprietario("Ana", "ana@uol.com", "def");

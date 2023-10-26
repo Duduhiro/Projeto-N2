@@ -2,6 +2,9 @@ import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class Helpers {
+
+    // Essa classe possui algumas funções que auxiliam na execução do programa principal
+
     public void printLogo() {
         
         // Função que imprime o logo do programa com fonte ASCII

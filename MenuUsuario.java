@@ -6,6 +6,8 @@ public class MenuUsuario {
     static Helpers helpers = new Helpers();
 
     public void consultarPropriedades(ArrayList<Propriedade> propriedades) {
+        
+        // Método que exibe todas as propriedades disponíveis
         System.out.println("\nPropriedades disponíveis:\n");
         for (Propriedade propriedade : propriedades) {
             if (!propriedade.isAlugada()) {
@@ -28,6 +30,8 @@ public class MenuUsuario {
 
 
     public void criarReserva(Usuario usuario, ArrayList<Propriedade> propriedades) {
+        
+        // Método que cria uma reserva
         Scanner sc = new Scanner(System.in);
         System.out.print("Digite o ID da propriedade: ");
         int id = helpers.getInt();
@@ -68,6 +72,8 @@ public class MenuUsuario {
 
 
     public void exibirReservas(Usuario usuario) {
+        
+        // Método que exibe as reservas do usuário
         if (usuario.getReservas().size() == 0) {
             System.out.println("Você não possui reservas!\n");
             return;
@@ -83,6 +89,8 @@ public class MenuUsuario {
     }
 
     public void avaliarPropriedades(Usuario usuario) {
+        
+        // Método que cria uma avaliação para uma propriedade
         Scanner sc = new Scanner(System.in);
 
         if (usuario.getReservas().size() == 0) {

@@ -25,4 +25,18 @@ public class MenuProprietario {
         System.out.println();
     }
 
+    public void exibirAlugadas(ArrayList<Propriedade> propriedades, Proprietario proprietario) {
+        System.out.println("\nPropriedades alugadas:\n");
+        for (Propriedade propriedade : propriedades) {
+            if (propriedade.getProprietario().getNome().equals(proprietario.getNome()) && propriedade.isAlugada()) {
+                System.out.println("ID: " + propriedade.getId() + " | " + propriedade.getTitulo() + " | " + propriedade.getLocalizacao());
+                System.out.println(propriedade.getDescricao() + " | " + propriedade.getCapacidade() + " pessoas");
+                System.out.println("R$" + propriedade.getPrecoPorNoite() + " por noite");
+                System.out.println();
+            }
+        }
+        System.out.println();
+
+    }
+
 }

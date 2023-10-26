@@ -141,7 +141,9 @@ public class App {
     }
 
     public static boolean verificaEmail(String email) {
-        Pattern pattern = Pattern.compile("^[\\w-\\.]+@([\\w-]+\\.)+[\\w-]{2,4}$"); // Regex para verificar se o email é válido
+
+        // Verifica se o email é válido a partir do uso de REGEX
+        Pattern pattern = Pattern.compile("^[\\w-\\.]+@([\\w-]+\\.)+[\\w-]{2,4}$");
         Matcher matcher = pattern.matcher(email);
         boolean match = matcher.find();
         return match;
@@ -199,7 +201,6 @@ public class App {
             System.out.println("Bem-vindo, " + usuario.getNome() + "!\n");
             System.out.print("1- Consultar propriedades\n2- Criar reserva\n3- Exibir reservas\n4- Avaliar propriedades\n5- Sair\nEscolha uma opção: ");
             escolha  = helpers.getInt();
-            sc.nextLine();
             switch (escolha) {
                 case 1:
                     menu.consultarPropriedades(propriedades);
@@ -239,9 +240,8 @@ public class App {
         while (escolha != 4) {
             helpers.printProp();
             System.out.println("Bem-vindo, " + proprietario.getNome() + "!\n");
-            System.out.print("1- Cadastrar propriedades\n2- Exibir propriedades\n3- Sair\nEscolha uma opção: ");
+            System.out.print("1- Cadastrar propriedades\n2- Exibir propriedades\n3- Exibir alugadas\n4- Sair\nEscolha uma opção: ");
             escolha  = helpers.getInt();
-            sc.nextLine();
             switch (escolha) {
                 case 1:
                     System.out.print("Título da propriedade: ");
@@ -252,19 +252,15 @@ public class App {
                     String localizacao = sc.nextLine();
                     System.out.print("Capacidade da propriedade: ");
                     int capacidade = helpers.getInt();
-                    sc.nextLine();
                     while (capacidade <= 0) {
                         System.out.print("Capacidade inválida! Digite novamente: ");
                         capacidade = helpers.getInt();
-                        sc.nextLine();
                     }
                     System.out.print("Preço por noite da propriedade: ");
                     double precoPorNoite = helpers.getDouble();
-                    sc.nextLine();
                     while (precoPorNoite <= 0) {
                         System.out.print("Preço inválido! Digite novamente: ");
                         precoPorNoite = helpers.getDouble();
-                        sc.nextLine();
                     }
                     menu.cadastrarPropriedade(propriedades, titulo, descricao, localizacao, capacidade, precoPorNoite, proprietario, id);
                     id++;
@@ -278,6 +274,11 @@ public class App {
                     sc.nextLine();
                     break;
                 case 3:
+                    menu.exibirAlugadas(propriedades, proprietario);
+                    System.out.println("Pressione enter para sair...");
+                    sc.nextLine();
+                    break;
+                case 4:
                     System.out.println("Até mais!");
                     return;
                 default:

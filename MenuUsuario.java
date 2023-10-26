@@ -9,7 +9,15 @@ public class MenuUsuario {
             if (!propriedade.isAlugada()) {
                 System.out.println("ID: " + propriedade.getId() + " | " + propriedade.getTitulo() + " | " + propriedade.getLocalizacao());
                 System.out.println(propriedade.getDescricao() + " | " + propriedade.getCapacidade() + " pessoas");
-                System.out.println("R$" + propriedade.getPrecoPorNoite() + " por noite\n");
+                System.out.println("R$" + propriedade.getPrecoPorNoite() + " por noite");
+                if (propriedade.getAvaliacoes().size() > 0) {
+                    System.out.printf("Avaliação média: %.1f estrelas\n", propriedade.getAvaliacaoMedia());
+                    System.out.println("Avaliações:");
+                    for (Avaliacao avaliacao : propriedade.getAvaliacoes()) {
+                        System.out.println(avaliacao.getAutor().getNome() + " | Nota: " + avaliacao.getPontuacao() + " | " + avaliacao.getComentario());
+                    }
+                }
+                System.out.println();
             }
         }
         
@@ -58,7 +66,7 @@ public class MenuUsuario {
         System.out.println("Reserva criada com sucesso!\n");
     }
 
-    
+
     public void exibirReservas(Usuario usuario) {
         if (usuario.getReservas().size() == 0) {
             System.out.println("Você não possui reservas!\n");
@@ -113,7 +121,7 @@ public class MenuUsuario {
                     System.out.print("Digite o comentário da propriedade: ");
                     String comentario = sc.nextLine();
 
-                    Avaliacao avaliacao = new Avaliacao(usuario.getNome(), nota, comentario);
+                    Avaliacao avaliacao = new Avaliacao(usuario, nota, comentario);
                     reserva.getPropriedade().getAvaliacoes().add(avaliacao);
                     reserva.getPropriedade().setAlugada(false);
                     usuario.getReservas().remove(index);

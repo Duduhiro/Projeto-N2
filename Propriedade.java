@@ -53,4 +53,12 @@ public class Propriedade {
     public int getId() {
         return id;
     }
+    public double getAvaliacaoMedia() {
+        double media = 0;
+        for (Avaliacao avaliacao : avaliacoes) {
+            media += avaliacao.getPontuacao();
+        }
+        return media / avaliacoes.size();
+    }
+
 }

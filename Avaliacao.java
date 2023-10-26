@@ -1,15 +1,15 @@
 public class Avaliacao {
-    private String autor;
+    private Usuario autor;
     private int pontuacao;
     private String comentario;
 
-    public Avaliacao (String autor, int pontuacao, String comentario) {
+    public Avaliacao (Usuario autor, int pontuacao, String comentario) {
         this.autor = autor;
         this.pontuacao = pontuacao;
         this.comentario = comentario;
     }
 
-    public String getAutor() {
+    public Usuario getAutor() {
         return autor;
     }
     public String getComentario() {

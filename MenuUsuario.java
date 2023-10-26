@@ -3,6 +3,8 @@ import java.util.Scanner;
 
 public class MenuUsuario {
     
+    static Helpers helpers = new Helpers();
+
     public void consultarPropriedades(ArrayList<Propriedade> propriedades) {
         System.out.println("\nPropriedades disponíveis:\n");
         for (Propriedade propriedade : propriedades) {
@@ -28,7 +30,7 @@ public class MenuUsuario {
     public void criarReserva(Usuario usuario, ArrayList<Propriedade> propriedades) {
         Scanner sc = new Scanner(System.in);
         System.out.print("Digite o ID da propriedade: ");
-        int id = sc.nextInt();
+        int id = helpers.getInt();
         sc.nextLine();
         int index = 0;
         boolean achado = false;
@@ -57,7 +59,7 @@ public class MenuUsuario {
         }
         
         System.out.print("Noites: ");
-        int noites = sc.nextInt();
+        int noites = helpers.getInt();
         sc.nextLine();
 
         Reserva reserva = new Reserva(propriedades.get(index), usuario, noites);
@@ -98,7 +100,7 @@ public class MenuUsuario {
 
         while (id != -1) {
             System.out.print("Digite o ID da propriedade que deseja avaliar ou digite \"-1\" para sair: ");
-            id = sc.nextInt();
+            id = helpers.getInt();
             sc.nextLine();
             if (id == -1) {
                 break;
@@ -111,7 +113,7 @@ public class MenuUsuario {
                     System.out.print("Digite a nota da propriedade (1-5): ");
                     int nota = 0;
                     while (nota < 1 || nota > 5) {
-                        nota = sc.nextInt();
+                        nota = helpers.getInt();
                         sc.nextLine();
                         if (nota < 1 || nota > 5) {
                             System.out.print("Nota inválida! Digite novamente: ");

@@ -246,11 +246,11 @@ public class App {
                         sc.nextLine();
                     }
                     System.out.print("Preço por noite da propriedade: ");
-                    double precoPorNoite = sc.nextDouble();
+                    double precoPorNoite = helpers.getDouble();
                     sc.nextLine();
                     while (precoPorNoite <= 0) {
                         System.out.print("Preço inválido! Digite novamente: ");
-                        precoPorNoite = sc.nextDouble();
+                        precoPorNoite = helpers.getDouble();
                         sc.nextLine();
                     }
                     menu.cadastrarPropriedade(propriedades, titulo, descricao, localizacao, capacidade, precoPorNoite, proprietario, id);

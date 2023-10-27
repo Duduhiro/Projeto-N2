@@ -88,7 +88,7 @@ public class MenuUsuario {
         }
     }
 
-    public void avaliarPropriedades(Usuario usuario) {
+    public void finalizarReserva(Usuario usuario) {
         
         // Método que cria uma avaliação para uma propriedade
         Scanner sc = new Scanner(System.in);
@@ -98,14 +98,13 @@ public class MenuUsuario {
             return;
         }
 
-        System.out.println("Propriedades disponíveis para avaliação:");
         exibirReservas(usuario);
 
         boolean achado = false;
         int id = 0;
 
         while (id != -1) {
-            System.out.print("Digite o ID da propriedade que deseja avaliar ou digite \"-1\" para sair: ");
+            System.out.print("Digite o ID da propriedade que deseja finalizar a reserva ou digite \"-1\" para sair: ");
             id = helpers.getInt();
             if (id == -1) {
                 break;
@@ -114,7 +113,26 @@ public class MenuUsuario {
                 if (reserva.getPropriedade().getId() == id) {
                     achado = true;
                     int index = usuario.getReservas().indexOf(reserva);
-                    System.out.println("Propriedade encontrada!");
+                    System.out.println("Propriedade encontrada!\n");
+                    System.out.println("Propriedade: " + reserva.getPropriedade().getTitulo() + " | " + reserva.getPropriedade().getLocalizacao());
+                    System.out.println("Valor total: R$" + reserva.getPrecoTotal() + "\n");
+                    System.out.print("Deseja continuar com a finalização da reserva? (S/N): ");
+                    String opcao = sc.nextLine();
+                    if (!opcao.toLowerCase().equals("s")) {
+                        System.out.println("Finalização da reserva cancelada!\n");
+                        return;
+                    } else {
+                        System.out.println("Reserva finalizada com sucesso!\n");
+                    }
+                    System.out.println("Deseja avaliar a propriedade? (S/N): ");
+                    opcao = sc.nextLine();
+                    reserva.getPropriedade().setAlugada(false);
+                    usuario.getReservas().remove(index);
+                    if (!opcao.toLowerCase().equals("s")) {
+                        System.out.println("Avaliação cancelada!\n");
+                        return;
+                    }
+                
                     System.out.print("Digite a nota da propriedade (1-5): ");
                     int nota = 0;
                     while (nota < 1 || nota > 5) {
@@ -129,8 +147,6 @@ public class MenuUsuario {
 
                     Avaliacao avaliacao = new Avaliacao(usuario, nota, comentario);
                     reserva.getPropriedade().getAvaliacoes().add(avaliacao);
-                    reserva.getPropriedade().setAlugada(false);
-                    usuario.getReservas().remove(index);
                     System.out.println("Avaliação criada com sucesso!\n");
                     break;
                 }

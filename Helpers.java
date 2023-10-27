@@ -63,6 +63,7 @@ public class Helpers {
     }
 
     public double getDouble() {
+        
         // Função que retorna um double digitado pelo usuário
         Scanner sc = new Scanner(System.in);
         double num = 0;

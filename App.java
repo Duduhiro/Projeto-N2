@@ -31,7 +31,6 @@ public class App {
 
         Propriedade propriedade1 = new Propriedade("Casa na praia", "Casa com 3 quartos, 2 banheiros, 1 cozinha e 1 sala", "Praia Grande", 6, 200, proprietario1, 0);
         propriedades.add(propriedade1);
-        propriedade1.setAlugada(true);
         usuario1.getReservas().add(new Reserva(propriedade1, usuario1, 3));
         Propriedade propriedade2 = new Propriedade("Casa na montanha", "Casa com 2 quartos, 1 banheiro, 1 cozinha e 1 sala", "Monte Verde", 4, 150, proprietario2, 1);
         propriedades.add(propriedade2);
@@ -204,7 +203,7 @@ public class App {
         while (escolha != 5) {
             helpers.printUser();
             System.out.println("Bem-vindo, " + usuario.getNome() + "!\n");
-            System.out.print("1- Consultar propriedades\n2- Criar reserva\n3- Exibir reservas\n4- Avaliar propriedades\n5- Sair\nEscolha uma opção: ");
+            System.out.print("1- Consultar propriedades\n2- Criar reserva\n3- Exibir reservas\n4- Finalizar reserva\n5- Sair\nEscolha uma opção: ");
             escolha  = helpers.getInt();
             switch (escolha) {
                 case 1:
@@ -223,7 +222,9 @@ public class App {
                     sc.nextLine();
                     break;
                 case 4:
-                    menu.avaliarPropriedades(usuario);
+                    menu.finalizarReserva(usuario);
+                    System.out.println("Pressione enter para continuar...");
+                    sc.nextLine();
                     break;
                 case 5:
                     System.out.println("Até mais!");

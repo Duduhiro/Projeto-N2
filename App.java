@@ -5,7 +5,10 @@ import java.util.regex.Pattern;
 
 public class App {
     private static int id = 0; // Variável usada pra manter controle sobre os ids das propriedades
-    static Helpers helpers = new Helpers(); // Objeto usado para imprimir os logos do programa
+    static Helpers helpers = new Helpers(); // Objeto usado com alguns métodos de auxilio
+    
+    // Caso na execução do programa os logos em ASCII ficarem distorcidos por dimensões do terminal
+    static boolean logos = true; // Altere essa variável para false para não printar os logos
     
     public static void main(String[] args) {
         ArrayList<Usuario> usuarios = new ArrayList<>();
@@ -24,9 +27,9 @@ public class App {
         Usuario usuario2 = new Usuario("Maria", "maria@gmail.com", "456");
         usuarios.add(usuario2);
         
-        Proprietario proprietario1 = new Proprietario("Paulo", "paulo@uol.com", "abc");
+        Proprietario proprietario1 = new Proprietario("Paulo", "paulo@gmail.com", "abc");
         proprietarios.add(proprietario1);
-        Proprietario proprietario2 = new Proprietario("Ana", "ana@uol.com", "def");
+        Proprietario proprietario2 = new Proprietario("Ana", "ana@gmail.com", "def");
         proprietarios.add(proprietario2);
 
         Propriedade propriedade1 = new Propriedade("Casa na praia", "Casa com 3 quartos, 2 banheiros, 1 cozinha e 1 sala", "Praia Grande", 6, 200, proprietario1, 0);
@@ -48,7 +51,7 @@ public class App {
         Login log = new Login();
         int opcao = 0;
         while (opcao != 5) {
-            helpers.printLogo();
+            helpers.printLogo(logos);
             System.out.println("1 - Login de usuário\n2 - Cadastro de usuário\n3 - Login de proprietário\n4 - Cadastro de proprietário\n5 - Sair\n");
             System.out.print("Escolha uma opção: ");
             opcao = helpers.getInt();
@@ -103,10 +106,8 @@ public class App {
                 case 4:
                     System.out.print("Digite seu nome: ");
                     nome = sc.nextLine();
-
                     System.out.print("Digite seu email: ");
                     email = sc.nextLine();
-
                     System.out.print("Digite sua senha: ");
                     senha = sc.nextLine();
                     cad.cadastrarProprietario(proprietarios, nome, email, senha);
@@ -134,7 +135,7 @@ public class App {
         MenuUsuario menu = new MenuUsuario();
         int escolha = 0;
         while (escolha != 5) {
-            helpers.printUser();
+            helpers.printUser(logos);
             System.out.println("Bem-vindo, " + usuario.getNome() + "!\n");
             System.out.print("1- Consultar propriedades\n2- Criar reserva\n3- Exibir reservas\n4- Finalizar reserva\n5- Sair\nEscolha uma opção: ");
             escolha  = helpers.getInt();
@@ -178,7 +179,7 @@ public class App {
         MenuProprietario menu = new MenuProprietario();
         int escolha = 0;
         while (escolha != 4) {
-            helpers.printProp();
+            helpers.printProp(logos);
             System.out.println("Bem-vindo, " + proprietario.getNome() + "!\n");
             System.out.print("1- Cadastrar propriedades\n2- Exibir propriedades\n3- Exibir alugadas\n4- Sair\nEscolha uma opção: ");
             escolha  = helpers.getInt();

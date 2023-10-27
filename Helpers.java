@@ -5,9 +5,13 @@ public class Helpers {
 
     // Essa classe possui algumas funções que auxiliam na execução do programa principal
 
-    public void printLogo() {
+    public void printLogo(boolean imprime) {
         
         // Função que imprime o logo do programa com fonte ASCII
+        if (!imprime) {
+            return;
+        }
+
         System.out.println("\n  /$$$$$$  /$$           /$$$$$$$            /$$$$$$$ \r\n" + //
                 " /$$__  $$|__/          | $$__  $$          | $$__  $$\r\n" + //
                 "| $$  \\ $$ /$$  /$$$$$$ | $$  \\ $$ /$$$$$$$ | $$  \\ $$\r\n" + //
@@ -18,9 +22,12 @@ public class Helpers {
                 "|__/  |__/|__/|__/      |_______/ |__/  |__/|_______/\n");
     }
 
-    public void printUser() {
+    public void printUser(boolean imprime) {
 
         // Função que imprime o logo para usuários com fonte ASCII
+        if (!imprime) {
+            return;
+        }
         System.out.println("\n  /$$$$$$  /$$           /$$$$$$$            /$$$$$$$                      /$$   /$$                              \r\n" + //
                 " /$$__  $$|__/          | $$__  $$          | $$__  $$                    | $$  | $$                              \r\n" + //
                 "| $$  \\ $$ /$$  /$$$$$$ | $$  \\ $$ /$$$$$$$ | $$  \\ $$                    | $$  | $$  /$$$$$$$  /$$$$$$   /$$$$$$ \r\n" + //
@@ -31,8 +38,11 @@ public class Helpers {
                 "|__/  |__/|__/|__/      |_______/ |__/  |__/|_______/                      \\______/ |_______/  \\_______/|__/      \r\n");
     }
 
-    public void printProp() {
+    public void printProp(boolean imprime) {
 
+        if (!imprime) {
+            return;
+        }
         // Função que imprime o logo para proprietários com fonte ASCII
         System.out.println("\n  /$$$$$$  /$$           /$$$$$$$            /$$$$$$$                      /$$$$$$$                    \r\n" + //
                 " /$$__  $$|__/          | $$__  $$          | $$__  $$                    | $$__  $$                   \r\n" + //
@@ -63,7 +73,7 @@ public class Helpers {
     }
 
     public double getDouble() {
-        
+
         // Função que retorna um double digitado pelo usuário
         Scanner sc = new Scanner(System.in);
         double num = 0;

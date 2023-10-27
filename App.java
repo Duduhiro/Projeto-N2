@@ -4,7 +4,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class App {
-    private static int id = 3; // Variável usada pra manter controle sobre os ids das propriedades
+    private static int id = 0; // Variável usada pra manter controle sobre os ids das propriedades
     static Helpers helpers = new Helpers(); // Objeto usado para imprimir os logos do programa
     
     public static void main(String[] args) {
@@ -36,6 +36,7 @@ public class App {
         propriedades.add(propriedade2);
         Propriedade propriedade3 = new Propriedade("Casa na cidade", "Casa com 4 quartos, 3 banheiros, 1 cozinha e 1 sala", "São Paulo", 8, 300, proprietario1, 2);
         propriedades.add(propriedade3);
+        id = 3;
     }
 
 

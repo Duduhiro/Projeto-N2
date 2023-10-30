@@ -1,5 +1,7 @@
 import java.util.InputMismatchException;
 import java.util.Scanner;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class Helpers {
 
@@ -91,4 +93,12 @@ public class Helpers {
         return num;
     }
 
+    public boolean verificaEmail(String email) {
+
+        // Verifica se o email é válido a partir do uso de REGEX
+        Pattern pattern = Pattern.compile("^[\\w-\\.]+@([\\w-]+\\.)+[\\w-]{2,4}$");
+        Matcher matcher = pattern.matcher(email);
+        boolean match = matcher.find();
+        return match;
+    }
 }

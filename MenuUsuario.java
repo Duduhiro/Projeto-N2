@@ -24,8 +24,6 @@ public class MenuUsuario {
                 System.out.println();
             }
         }
-        
-        System.out.println();
     }
 
 
@@ -43,7 +41,7 @@ public class MenuUsuario {
                 System.out.println("Propriedade encontrada!\n");
                 System.out.println("Propriedade: " + propriedade.getTitulo() + " | " + propriedade.getLocalizacao());
                 System.out.println("Preço por noite: R$" + propriedade.getPrecoPorNoite() + "\n");
-                System.out.print("Deseja continuar com a reserva? (S/N): ");
+                System.out.print("Deseja continuar com a reserva? (S - para continuar): ");
                 String opcao = sc.nextLine();
                 if (!opcao.toLowerCase().equals("s")) {
                     System.out.println("Reserva cancelada!\n");
@@ -116,7 +114,7 @@ public class MenuUsuario {
                     System.out.println("Propriedade encontrada!\n");
                     System.out.println("Propriedade: " + reserva.getPropriedade().getTitulo() + " | " + reserva.getPropriedade().getLocalizacao());
                     System.out.println("Valor total: R$" + reserva.getPrecoTotal() + "\n");
-                    System.out.print("Deseja continuar com a finalização da reserva? (S/N): ");
+                    System.out.print("Deseja continuar com a finalização da reserva? (S - para continuar): ");
                     String opcao = sc.nextLine();
                     if (!opcao.toLowerCase().equals("s")) {
                         System.out.println("Finalização da reserva cancelada!\n");
@@ -124,7 +122,7 @@ public class MenuUsuario {
                     } else {
                         System.out.println("Reserva finalizada com sucesso!\n");
                     }
-                    System.out.println("Deseja avaliar a propriedade? (S/N): ");
+                    System.out.println("Deseja avaliar a propriedade? (S - para continuar): ");
                     opcao = sc.nextLine();
                     reserva.getPropriedade().setAlugada(false);
                     usuario.getReservas().remove(index);

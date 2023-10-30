@@ -102,7 +102,7 @@ public class MenuUsuario {
         int id = 0;
 
         while (id != -1) {
-            System.out.print("Digite o ID da propriedade que deseja finalizar a reserva ou digite \"-1\" para sair: ");
+            System.out.print("Digite o ID da propriedade que deseja finalizar a reserva ou digite \"-1\" para continuar: ");
             id = helpers.getInt();
             if (id == -1) {
                 break;

@@ -135,4 +135,11 @@ public class Helpers {
         System.out.flush();
     }
 
+    public void opCancelada() {
+        Scanner sc = new Scanner(System.in);
+        System.out.println("\nOperação cancelada!");
+        System.out.print("Pressione ENTER para continuar...");
+        sc.nextLine();
+    }
+
 }

@@ -15,6 +15,7 @@ public class App {
         ArrayList<Proprietario> proprietarios = new ArrayList<>();
         ArrayList<Propriedade> propriedades = new ArrayList<>();
         conteudoFalso(usuarios, propriedades, proprietarios); // Caso não queira usar os exemplos, comente essa linha
+        helpers.clearScreen();
         app(usuarios, propriedades, proprietarios);
     }
 
@@ -72,29 +73,36 @@ public class App {
                         menuUsuario(usuarioLogado, propriedades);
                     } else {
                         System.out.println("Email ou senha inválidos!\n");
-                        System.out.println("Pressione enter para continuar...");
+                        System.out.print("Pressione ENTER para continuar...");
                         sc.nextLine();
                     }
                     break;
 
                 case 2:
                     helpers.clearScreen();
-                    System.out.println("\n--= CADASTRO DE USUÁRIO =--\n");
-                    System.out.print("Digite seu nome: ");
+                    System.out.println("\n--= CADASTRO DE PROPRIETÁRIO =--\n");
+                    System.out.print("Digite seu nome (digite 'sair' para cancelar): ");
                     nome = sc.nextLine();
-
-                    System.out.print("Digite seu email: ");
+                    if (nome.toLowerCase().equals("sair")) {
+                        helpers.opCancelada();
+                        break;
+                    }
+                    System.out.print("Digite seu email (digite 'sair para cancelar'): ");
                     email = sc.nextLine();
+                    if (email.toLowerCase().equals("sair")) {
+                        helpers.opCancelada();
+                        break;
+                    }
                     if (!helpers.verificaEmail(email)) {
                         System.out.print("Email inválido!\n");
-                        System.out.println("Pressino enter para continuar...");
+                        System.out.println("Pressino ENTER para continuar...");
                         sc.nextLine();
                         break;
                     }
                     System.out.print("Digite sua senha: ");
                     senha = sc.nextLine();
                     cad.cadastrarUsuario(usuarios, nome, email, senha);
-                    System.out.println("Pressino enter para continuar...");
+                    System.out.println("Pressino ENTER para continuar...");
                     sc.nextLine();
                     break;
                 
@@ -110,7 +118,7 @@ public class App {
                         menuProprietario(propritarioLogado, propriedades);
                     } else {
                         System.out.println("Email ou senha inválidos!\n");
-                        System.out.println("Pressione enter para continuar...");
+                        System.out.print("Pressione ENTER para continuar...");
                         sc.nextLine();
                     }
                     break;
@@ -118,20 +126,29 @@ public class App {
                 case 4:
                     helpers.clearScreen();
                     System.out.println("\n--= CADASTRO DE PROPRIETÁRIO =--\n");
-                    System.out.print("Digite seu nome: ");
+                    System.out.print("Digite seu nome (digite 'sair' para cancelar): ");
                     nome = sc.nextLine();
-                    System.out.print("Digite seu email: ");
+                    if (nome.toLowerCase().equals("sair")) {
+                        helpers.opCancelada();
+                        break;
+                    }
+                    System.out.print("Digite seu email (digite 'sair para cancelar'): ");
                     email = sc.nextLine();
+                    if (email.toLowerCase().equals("sair")) {
+                        helpers.opCancelada();
+                        break;
+                    }
                     if (!helpers.verificaEmail(email)) {
                         System.out.print("Email inválido!\n");
-                        System.out.println("Pressino enter para continuar...");
+                        System.out.println("Pressino ENTER para continuar...");
                         sc.nextLine();
                         break;
                     }
                     System.out.print("Digite sua senha: ");
                     senha = sc.nextLine();
+
                     cad.cadastrarProprietario(proprietarios, nome, email, senha);
-                    System.out.println("Pressino enter para continuar...");
+                    System.out.println("Pressino ENTER para continuar...");
                     sc.nextLine();
                     break;    
 
@@ -143,7 +160,7 @@ public class App {
                 default:
                     helpers.clearScreen();
                     helpers.printError(logos);
-                    System.out.println("Pressino enter para continuar...");
+                    System.out.print("Pressione ENTER para continuar...");
                     sc.nextLine();
                     break;
             }
@@ -170,28 +187,28 @@ public class App {
                     helpers.clearScreen();
                     System.out.println("\n--= CONSULTAR PROPRIEDADES =--");
                     menu.consultarPropriedades(propriedades);
-                    System.out.println("Pressione enter para sair...");
+                    System.out.print("Pressione ENTER para continuar...");
                     sc.nextLine();
                     break;
                 case 2:
                     helpers.clearScreen();
                     System.out.println("\n--= CRIAR RESERVA =--\n");
                     menu.criarReserva(usuario, propriedades);
-                    System.out.println("Pressione enter para continuar...");
+                    System.out.print("Pressione ENTER para continuar...");
                     sc.nextLine();
                     break;
                 case 3:
                     helpers.clearScreen();
                     System.out.println("\n--= EXIBIR RESERVAS =--\n");
                     menu.exibirReservas(usuario);
-                    System.out.println("Pressione enter para sair...");
+                    System.out.print("Pressione ENTER para continuar...");
                     sc.nextLine();
                     break;
                 case 4:
                     helpers.clearScreen();
                     System.out.println("\n--= FINALIZAR RESERVA =--\n");
                     menu.finalizarReserva(usuario);
-                    System.out.println("\nPressione enter para continuar...");
+                    System.out.println("\nPressione ENTER para continuar...");
                     sc.nextLine();
                     break;
                 case 5:
@@ -200,7 +217,7 @@ public class App {
                 default:
                     helpers.clearScreen();
                     helpers.printError(logos);
-                    System.out.println("Pressino enter para continuar...");
+                    System.out.println("Pressino ENTER para continuar...");
                     sc.nextLine();
                     break;
             }
@@ -225,42 +242,62 @@ public class App {
                 case 1:
                 helpers.clearScreen();
                     System.out.println("\n--= CADASTRAR PROPRIEDADES =--\n");
-                    System.out.print("Título da propriedade: ");
+                    System.out.print("Título da propriedade (digite 'sair' para cancelar): ");
                     String titulo = sc.nextLine();
-                    System.out.print("Descrição da propriedade: ");
+                    if (titulo.toLowerCase().equals("sair")) {
+                        helpers.opCancelada();
+                        break;
+                    }
+                    System.out.print("Descrição da propriedade (digite 'sair' para cancelar): ");
                     String descricao = sc.nextLine();
+                    if (descricao.toLowerCase().equals("sair")) {
+                        helpers.opCancelada();
+                        break;
+                    }
                     System.out.print("Localização da propriedade: ");
                     String localizacao = sc.nextLine();
-                    System.out.print("Capacidade da propriedade: ");
+                    if (localizacao.toLowerCase().equals("sair")) {
+                        helpers.opCancelada();
+                        break;
+                    }
+                    System.out.print("Capacidade da propriedade (digite -1 para sair): ");
                     int capacidade = helpers.getInt();
                     while (capacidade <= 0) {
+                        if (capacidade == -1) {
+                            helpers.opCancelada();
+                            break;
+                        }
                         System.out.print("Capacidade inválida! Digite novamente: ");
                         capacidade = helpers.getInt();
                     }
-                    System.out.print("Preço por noite da propriedade: ");
+                    System.out.print("Preço por noite da propriedade (digite -1 para sair): ");
                     double precoPorNoite = helpers.getDouble();
                     while (precoPorNoite <= 0) {
+                        if (precoPorNoite == -1) {
+                            helpers.opCancelada();
+                            break;
+                        }
                         System.out.print("Preço inválido! Digite novamente: ");
                         precoPorNoite = helpers.getDouble();
                     }
                     menu.cadastrarPropriedade(propriedades, titulo, descricao, localizacao, capacidade, precoPorNoite, proprietario, id);
                     id++;
                     System.out.println("Propriedade cadastrada com sucesso!\n");
-                    System.out.println("Pressione enter para continuar...");
+                    System.out.print("Pressione ENTER para continuar...");
                     sc.nextLine();
                     break;
                 case 2:
                     helpers.clearScreen();
                     System.out.println("\n--= EXIBIR PROPRIEDADES =--\n");
                     menu.exibirPropriedades(propriedades, proprietario);
-                    System.out.println("Pressione enter para sair...");
+                    System.out.print("Pressione ENTER para continuar...");
                     sc.nextLine();
                     break;
                 case 3:
                     helpers.clearScreen();
                     System.out.println("\n--= EXIBIR ALUGADAS =--\n");
                     menu.exibirAlugadas(propriedades, proprietario);
-                    System.out.println("Pressione enter para sair...");
+                    System.out.print("Pressione ENTER para continuar...");
                     sc.nextLine();
                     break;
                 case 4:
@@ -269,7 +306,7 @@ public class App {
                 default:
                     helpers.clearScreen();
                     helpers.printError(logos);
-                    System.out.println("Pressino enter para continuar...");
+                    System.out.println("Pressino ENTER para continuar...");
                     sc.nextLine();
                     break;
             }

@@ -61,6 +61,7 @@ public class App {
             switch (opcao) {
             
                 case 1:
+                    helpers.clearScreen();
                     System.out.println("\n--= LOGIN DE USUÁRIO =--\n");
                     System.out.print("Digite seu email: ");
                     email = sc.nextLine();
@@ -77,6 +78,7 @@ public class App {
                     break;
 
                 case 2:
+                    helpers.clearScreen();
                     System.out.println("\n--= CADASTRO DE USUÁRIO =--\n");
                     System.out.print("Digite seu nome: ");
                     nome = sc.nextLine();
@@ -97,6 +99,7 @@ public class App {
                     break;
                 
                 case 3:
+                    helpers.clearScreen();
                     System.out.println("\n--= LOGIN DE PROPRIETÁRIO =--\n");
                     System.out.print("Digite seu email: ");
                     email = sc.nextLine();
@@ -113,6 +116,7 @@ public class App {
                     break;
 
                 case 4:
+                    helpers.clearScreen();
                     System.out.println("\n--= CADASTRO DE PROPRIETÁRIO =--\n");
                     System.out.print("Digite seu nome: ");
                     nome = sc.nextLine();
@@ -132,13 +136,18 @@ public class App {
                     break;    
 
                 case 5:
-                    System.out.println("Até mais!");
+                    helpers.clearScreen();
+                    helpers.printSeeYa(logos);
                     return;
 
                 default:
-                    System.out.println("Opção inválida!");
+                    helpers.clearScreen();
+                    helpers.printError(logos);
+                    System.out.println("Pressino enter para continuar...");
+                    sc.nextLine();
                     break;
             }
+            helpers.clearScreen();
         }
         sc.close();
     }
@@ -151,30 +160,35 @@ public class App {
         MenuUsuario menu = new MenuUsuario();
         int escolha = 0;
         while (escolha != 5) {
+            helpers.clearScreen();
             helpers.printUser(logos);
             System.out.println("Bem-vindo, " + usuario.getNome() + "!\n");
             System.out.print("1- Consultar propriedades\n2- Criar reserva\n3- Exibir reservas\n4- Finalizar reserva\n5- Sair\nEscolha uma opção: ");
             escolha  = helpers.getInt();
             switch (escolha) {
                 case 1:
+                    helpers.clearScreen();
                     System.out.println("\n--= CONSULTAR PROPRIEDADES =--");
                     menu.consultarPropriedades(propriedades);
                     System.out.println("Pressione enter para sair...");
                     sc.nextLine();
                     break;
                 case 2:
+                    helpers.clearScreen();
                     System.out.println("\n--= CRIAR RESERVA =--\n");
                     menu.criarReserva(usuario, propriedades);
                     System.out.println("Pressione enter para continuar...");
                     sc.nextLine();
                     break;
                 case 3:
+                    helpers.clearScreen();
                     System.out.println("\n--= EXIBIR RESERVAS =--\n");
                     menu.exibirReservas(usuario);
                     System.out.println("Pressione enter para sair...");
                     sc.nextLine();
                     break;
                 case 4:
+                    helpers.clearScreen();
                     System.out.println("\n--= FINALIZAR RESERVA =--\n");
                     menu.finalizarReserva(usuario);
                     System.out.println("\nPressione enter para continuar...");
@@ -184,7 +198,10 @@ public class App {
                     System.out.println("Até mais!");
                     return;
                 default:
-                    System.out.println("Opção inválida!");
+                    helpers.clearScreen();
+                    helpers.printError(logos);
+                    System.out.println("Pressino enter para continuar...");
+                    sc.nextLine();
                     break;
             }
         }
@@ -199,12 +216,14 @@ public class App {
         MenuProprietario menu = new MenuProprietario();
         int escolha = 0;
         while (escolha != 4) {
+            helpers.clearScreen();
             helpers.printProp(logos);
             System.out.println("Bem-vindo, " + proprietario.getNome() + "!\n");
             System.out.print("1- Cadastrar propriedades\n2- Exibir propriedades\n3- Exibir alugadas\n4- Sair\nEscolha uma opção: ");
             escolha  = helpers.getInt();
             switch (escolha) {
                 case 1:
+                helpers.clearScreen();
                     System.out.println("\n--= CADASTRAR PROPRIEDADES =--\n");
                     System.out.print("Título da propriedade: ");
                     String titulo = sc.nextLine();
@@ -231,12 +250,14 @@ public class App {
                     sc.nextLine();
                     break;
                 case 2:
+                    helpers.clearScreen();
                     System.out.println("\n--= EXIBIR PROPRIEDADES =--\n");
                     menu.exibirPropriedades(propriedades, proprietario);
                     System.out.println("Pressione enter para sair...");
                     sc.nextLine();
                     break;
                 case 3:
+                    helpers.clearScreen();
                     System.out.println("\n--= EXIBIR ALUGADAS =--\n");
                     menu.exibirAlugadas(propriedades, proprietario);
                     System.out.println("Pressione enter para sair...");
@@ -246,7 +267,10 @@ public class App {
                     System.out.println("Até mais!");
                     return;
                 default:
-                    System.out.println("Opção inválida!");
+                    helpers.clearScreen();
+                    helpers.printError(logos);
+                    System.out.println("Pressino enter para continuar...");
+                    sc.nextLine();
                     break;
             }
         }

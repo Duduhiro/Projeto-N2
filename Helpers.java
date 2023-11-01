@@ -131,6 +131,7 @@ public class Helpers {
     }
 
     public void clearScreen() {
+        // Função que limpa a tela do terminal
         System.out.print("\033[H\033[2J");
         System.out.flush();
     }

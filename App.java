@@ -23,16 +23,20 @@ public class App {
     public static void conteudoFalso(ArrayList<Usuario> usuarios, ArrayList<Propriedade> propriedades, ArrayList<Proprietario> proprietarios) {
         
         // Método usado para adicionar alguns usuários, proprietários e propriedades para testar o programa
-        Usuario usuario1 = new Usuario("João", "joao@gmail.com", "123");
+        
+        // Usuários falsos
+        Usuario usuario1 = new Usuario("João", "joao@gmail.com", "123"); // Login: joao@gmail.com | 123
         usuarios.add(usuario1);
-        Usuario usuario2 = new Usuario("Maria", "maria@gmail.com", "456");
+        Usuario usuario2 = new Usuario("Maria", "maria@gmail.com", "456"); // Login maria@gmail.com | 456
         usuarios.add(usuario2);
         
-        Proprietario proprietario1 = new Proprietario("Paulo", "paulo@gmail.com", "abc");
+        // Proprietários falsos
+        Proprietario proprietario1 = new Proprietario("Paulo", "paulo@gmail.com", "abc"); // Login: paulo@gmail.com | abc
         proprietarios.add(proprietario1);
-        Proprietario proprietario2 = new Proprietario("Ana", "ana@gmail.com", "def");
+        Proprietario proprietario2 = new Proprietario("Ana", "ana@gmail.com", "def"); // Login: ana@gmail.com | def
         proprietarios.add(proprietario2);
 
+        // Propriedades falsas
         Propriedade propriedade1 = new Propriedade("Casa na praia", "Casa com 3 quartos, 2 banheiros, 1 cozinha e 1 sala", "Praia Grande", 6, 200, proprietario1, 0);
         propriedades.add(propriedade1);
         usuario1.getReservas().add(new Reserva(propriedade1, usuario1, 3));
@@ -47,21 +51,23 @@ public class App {
     public static void app(ArrayList<Usuario> usuarios, ArrayList<Propriedade> propriedades, ArrayList<Proprietario> proprietarios) {
         
         // Método principal do programa, onde o usuário escolhe se quer logar ou cadastrar um usuário ou proprietário
-        Scanner sc = new Scanner(System.in);
+        
+        // Instanciando objetos de login e cadastro
         Cadastrar cad = new Cadastrar();
         Login log = new Login();
+        
+        Scanner sc = new Scanner(System.in);
         int opcao = 0;
         while (opcao != 5) {
             helpers.printLogo(logos);
             System.out.println("1 - Login de usuário\n2 - Cadastro de usuário\n3 - Login de proprietário\n4 - Cadastro de proprietário\n5 - Sair\n");
             System.out.print("Escolha uma opção: ");
             opcao = helpers.getInt();
-            
-            String nome, email, senha;
 
             switch (opcao) {
             
                 case 1:
+                    // Executa a função de login de usuário
                     helpers.clearScreen();
                     System.out.println("\n--= LOGIN DE USUÁRIO =--\n");
                     Usuario usuarioLogado = log.loginUsuario(usuarios);
@@ -75,12 +81,14 @@ public class App {
                     break;
 
                 case 2:
+                    // Executa a função de cadastro de usuário
                     helpers.clearScreen();
                     System.out.println("\n--= CADASTRO DE PROPRIETÁRIO =--\n");
                     cad.cadastrarUsuario(usuarios);
                     break;
                 
                 case 3:
+                    // Executa a função de login de proprietário
                     helpers.clearScreen();
                     System.out.println("\n--= LOGIN DE PROPRIETÁRIO =--\n");
                     Proprietario propritarioLogado = log.loginProprietario(proprietarios);
@@ -94,6 +102,7 @@ public class App {
                     break;
 
                 case 4:
+                    // Executa a função de cadastro de proprietário
                     helpers.clearScreen();
                     System.out.println("\n--= CADASTRO DE PROPRIETÁRIO =--\n");
                     cad.cadastrarProprietario(proprietarios);
@@ -105,6 +114,7 @@ public class App {
                     return;
 
                 default:
+                    // Caso o usuário digite uma opção inválida
                     helpers.clearScreen();
                     helpers.printError(logos);
                     System.out.print("Pressione ENTER para continuar...");
@@ -121,7 +131,7 @@ public class App {
         
         // Método usado para exibir o menu do usuário
         Scanner sc = new Scanner(System.in);
-        MenuUsuario menu = new MenuUsuario();
+        MenuUsuario menu = new MenuUsuario(); // Objeto usado para executar os métodos do menu do usuário
         int escolha = 0;
         while (escolha != 5) {
             helpers.clearScreen();
@@ -131,6 +141,7 @@ public class App {
             escolha  = helpers.getInt();
             switch (escolha) {
                 case 1:
+                    // Executa a função de consultar propriedades
                     helpers.clearScreen();
                     System.out.println("\n--= CONSULTAR PROPRIEDADES =--");
                     menu.consultarPropriedades(propriedades);
@@ -138,6 +149,7 @@ public class App {
                     sc.nextLine();
                     break;
                 case 2:
+                    // Executa a função de criar reserva
                     helpers.clearScreen();
                     System.out.println("\n--= CRIAR RESERVA =--\n");
                     menu.criarReserva(usuario, propriedades);
@@ -145,6 +157,7 @@ public class App {
                     sc.nextLine();
                     break;
                 case 3:
+                    // Executa a função de exibir reservas
                     helpers.clearScreen();
                     System.out.println("\n--= EXIBIR RESERVAS =--\n");
                     menu.exibirReservas(usuario);
@@ -152,6 +165,7 @@ public class App {
                     sc.nextLine();
                     break;
                 case 4:
+                    // Executa a função de finalizar reserva
                     helpers.clearScreen();
                     System.out.println("\n--= FINALIZAR RESERVA =--\n");
                     menu.finalizarReserva(usuario);
@@ -159,9 +173,11 @@ public class App {
                     sc.nextLine();
                     break;
                 case 5:
+                    // Desloga o usuário
                     System.out.println("Até mais!");
                     return;
                 default:
+                    // Caso o usuário digite uma opção inválida
                     helpers.clearScreen();
                     helpers.printError(logos);
                     System.out.println("Pressione ENTER para continuar...");
@@ -177,7 +193,7 @@ public class App {
         
         // Método usado para exibir o menu do proprietário
         Scanner sc = new Scanner(System.in);
-        MenuProprietario menu = new MenuProprietario();
+        MenuProprietario menu = new MenuProprietario(); // Objeto usado para executar os métodos do menu do proprietário
         int escolha = 0;
         while (escolha != 4) {
             helpers.clearScreen();
@@ -187,6 +203,7 @@ public class App {
             escolha  = helpers.getInt();
             switch (escolha) {
                 case 1:
+                    // Executa a função de cadastrar propriedades
                     helpers.clearScreen();
                     System.out.println("\n--= CADASTRAR PROPRIEDADES =--\n");
                     boolean opStat = menu.cadastrarPropriedade(propriedades, proprietario, id);
@@ -198,6 +215,7 @@ public class App {
                     }
                     break;
                 case 2:
+                    // Executa a função de exibir propriedades
                     helpers.clearScreen();
                     System.out.println("\n--= EXIBIR PROPRIEDADES =--\n");
                     menu.exibirPropriedades(propriedades, proprietario);
@@ -205,6 +223,7 @@ public class App {
                     sc.nextLine();
                     break;
                 case 3:
+                    // Executa a função de exibir propriedades alugadas
                     helpers.clearScreen();
                     System.out.println("\n--= EXIBIR ALUGADAS =--\n");
                     menu.exibirAlugadas(propriedades, proprietario);
@@ -212,9 +231,11 @@ public class App {
                     sc.nextLine();
                     break;
                 case 4:
+                    // Desloga o proprietário
                     System.out.println("Até mais!");
                     return;
                 default:
+                    // Caso o usuário digite uma opção inválida
                     helpers.clearScreen();
                     helpers.printError(logos);
                     System.out.println("Pressione ENTER para continuar...");
@@ -224,6 +245,5 @@ public class App {
         }
         sc.close();
     }
-
 
 }

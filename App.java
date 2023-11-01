@@ -64,11 +64,7 @@ public class App {
                 case 1:
                     helpers.clearScreen();
                     System.out.println("\n--= LOGIN DE USUÁRIO =--\n");
-                    System.out.print("Digite seu email: ");
-                    email = sc.nextLine();
-                    System.out.print("Digite sua senha: ");
-                    senha = sc.nextLine();
-                    Usuario usuarioLogado = log.loginUsuario(email, senha, usuarios);
+                    Usuario usuarioLogado = log.loginUsuario(usuarios);
                     if (usuarioLogado != null) {
                         menuUsuario(usuarioLogado, propriedades);
                     } else {
@@ -81,39 +77,13 @@ public class App {
                 case 2:
                     helpers.clearScreen();
                     System.out.println("\n--= CADASTRO DE PROPRIETÁRIO =--\n");
-                    System.out.print("Digite seu nome (digite 'sair' para cancelar): ");
-                    nome = sc.nextLine();
-                    if (nome.toLowerCase().equals("sair")) {
-                        helpers.opCancelada();
-                        break;
-                    }
-                    System.out.print("Digite seu email (digite 'sair para cancelar'): ");
-                    email = sc.nextLine();
-                    if (email.toLowerCase().equals("sair")) {
-                        helpers.opCancelada();
-                        break;
-                    }
-                    if (!helpers.verificaEmail(email)) {
-                        System.out.print("Email inválido!\n");
-                        System.out.println("Pressione ENTER para continuar...");
-                        sc.nextLine();
-                        break;
-                    }
-                    System.out.print("Digite sua senha: ");
-                    senha = sc.nextLine();
-                    cad.cadastrarUsuario(usuarios, nome, email, senha);
-                    System.out.println("Pressione ENTER para continuar...");
-                    sc.nextLine();
+                    cad.cadastrarUsuario(usuarios);
                     break;
                 
                 case 3:
                     helpers.clearScreen();
                     System.out.println("\n--= LOGIN DE PROPRIETÁRIO =--\n");
-                    System.out.print("Digite seu email: ");
-                    email = sc.nextLine();
-                    System.out.print("Digite sua senha: ");
-                    senha = sc.nextLine();
-                    Proprietario propritarioLogado = log.loginProprietario(email, senha, proprietarios);
+                    Proprietario propritarioLogado = log.loginProprietario(proprietarios);
                     if (propritarioLogado != null) {
                         menuProprietario(propritarioLogado, propriedades);
                     } else {
@@ -126,30 +96,7 @@ public class App {
                 case 4:
                     helpers.clearScreen();
                     System.out.println("\n--= CADASTRO DE PROPRIETÁRIO =--\n");
-                    System.out.print("Digite seu nome (digite 'sair' para cancelar): ");
-                    nome = sc.nextLine();
-                    if (nome.toLowerCase().equals("sair")) {
-                        helpers.opCancelada();
-                        break;
-                    }
-                    System.out.print("Digite seu email (digite 'sair para cancelar'): ");
-                    email = sc.nextLine();
-                    if (email.toLowerCase().equals("sair")) {
-                        helpers.opCancelada();
-                        break;
-                    }
-                    if (!helpers.verificaEmail(email)) {
-                        System.out.print("Email inválido!\n");
-                        System.out.println("Pressione ENTER para continuar...");
-                        sc.nextLine();
-                        break;
-                    }
-                    System.out.print("Digite sua senha: ");
-                    senha = sc.nextLine();
-
-                    cad.cadastrarProprietario(proprietarios, nome, email, senha);
-                    System.out.println("Pressione ENTER para continuar...");
-                    sc.nextLine();
+                    cad.cadastrarProprietario(proprietarios);
                     break;    
 
                 case 5:
@@ -240,51 +187,15 @@ public class App {
             escolha  = helpers.getInt();
             switch (escolha) {
                 case 1:
-                helpers.clearScreen();
+                    helpers.clearScreen();
                     System.out.println("\n--= CADASTRAR PROPRIEDADES =--\n");
-                    System.out.print("Título da propriedade (digite 'sair' para cancelar): ");
-                    String titulo = sc.nextLine();
-                    if (titulo.toLowerCase().equals("sair")) {
-                        helpers.opCancelada();
-                        break;
+                    boolean opStat = menu.cadastrarPropriedade(propriedades, proprietario, id);
+                    if (opStat) {
+                        id++;
+                        System.out.println("Propriedade cadastrada com sucesso!\n");
+                        System.out.print("Pressione ENTER para continuar...");
+                        sc.nextLine();
                     }
-                    System.out.print("Descrição da propriedade (digite 'sair' para cancelar): ");
-                    String descricao = sc.nextLine();
-                    if (descricao.toLowerCase().equals("sair")) {
-                        helpers.opCancelada();
-                        break;
-                    }
-                    System.out.print("Localização da propriedade: ");
-                    String localizacao = sc.nextLine();
-                    if (localizacao.toLowerCase().equals("sair")) {
-                        helpers.opCancelada();
-                        break;
-                    }
-                    System.out.print("Capacidade da propriedade (digite -1 para sair): ");
-                    int capacidade = helpers.getInt();
-                    while (capacidade <= 0) {
-                        if (capacidade == -1) {
-                            helpers.opCancelada();
-                            break;
-                        }
-                        System.out.print("Capacidade inválida! Digite novamente: ");
-                        capacidade = helpers.getInt();
-                    }
-                    System.out.print("Preço por noite da propriedade (digite -1 para sair): ");
-                    double precoPorNoite = helpers.getDouble();
-                    while (precoPorNoite <= 0) {
-                        if (precoPorNoite == -1) {
-                            helpers.opCancelada();
-                            break;
-                        }
-                        System.out.print("Preço inválido! Digite novamente: ");
-                        precoPorNoite = helpers.getDouble();
-                    }
-                    menu.cadastrarPropriedade(propriedades, titulo, descricao, localizacao, capacidade, precoPorNoite, proprietario, id);
-                    id++;
-                    System.out.println("Propriedade cadastrada com sucesso!\n");
-                    System.out.print("Pressione ENTER para continuar...");
-                    sc.nextLine();
                     break;
                 case 2:
                     helpers.clearScreen();

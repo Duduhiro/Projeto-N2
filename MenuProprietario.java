@@ -1,12 +1,57 @@
 import java.util.ArrayList;
+import java.util.Scanner;
 
 public class MenuProprietario {
 
-    public void cadastrarPropriedade(ArrayList<Propriedade> propriedades, String titulo, String descricao, String localizacao, int capacidade, double precoPorNoite, Proprietario proprietario, int id) {
+    public boolean cadastrarPropriedade(ArrayList<Propriedade> propriedades, Proprietario proprietario, int id) {
         
         // Método que cadastra uma propriedade
+
+        Scanner sc = new Scanner(System.in);
+        Helpers helpers = new Helpers();
+
+        System.out.print("Título da propriedade (digite 'sair' para cancelar): ");
+        String titulo = sc.nextLine();
+        if (titulo.toLowerCase().equals("sair")) {
+            helpers.opCancelada();
+            return false;
+        }
+        System.out.print("Descrição da propriedade (digite 'sair' para cancelar): ");
+        String descricao = sc.nextLine();
+        if (descricao.toLowerCase().equals("sair")) {
+            helpers.opCancelada();
+            return false;
+        }
+        System.out.print("Localização da propriedade: ");
+        String localizacao = sc.nextLine();
+        if (localizacao.toLowerCase().equals("sair")) {
+            helpers.opCancelada();
+            return false;
+        }
+        System.out.print("Capacidade da propriedade (digite -1 para sair): ");
+        int capacidade = helpers.getInt();
+        while (capacidade <= 0) {
+            if (capacidade == -1) {
+                helpers.opCancelada();
+                return false;
+            }
+            System.out.print("Capacidade inválida! Digite novamente: ");
+            capacidade = helpers.getInt();
+        }
+        System.out.print("Preço por noite da propriedade (digite -1 para sair): ");
+        double precoPorNoite = helpers.getDouble();
+        while (precoPorNoite <= 0) {
+            if (precoPorNoite == -1) {
+                helpers.opCancelada();
+                return false;
+            }
+            System.out.print("Preço inválido! Digite novamente: ");
+            precoPorNoite = helpers.getDouble();
+        }
+
         Propriedade propriedade = new Propriedade(titulo, descricao, localizacao, capacidade, precoPorNoite, proprietario, id);
         propriedades.add(propriedade);
+        return true;
     }
 
     public void exibirPropriedades(ArrayList<Propriedade> propriedades, Proprietario proprietario) {

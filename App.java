@@ -95,14 +95,14 @@ public class App {
                     }
                     if (!helpers.verificaEmail(email)) {
                         System.out.print("Email inválido!\n");
-                        System.out.println("Pressino ENTER para continuar...");
+                        System.out.println("Pressione ENTER para continuar...");
                         sc.nextLine();
                         break;
                     }
                     System.out.print("Digite sua senha: ");
                     senha = sc.nextLine();
                     cad.cadastrarUsuario(usuarios, nome, email, senha);
-                    System.out.println("Pressino ENTER para continuar...");
+                    System.out.println("Pressione ENTER para continuar...");
                     sc.nextLine();
                     break;
                 
@@ -140,7 +140,7 @@ public class App {
                     }
                     if (!helpers.verificaEmail(email)) {
                         System.out.print("Email inválido!\n");
-                        System.out.println("Pressino ENTER para continuar...");
+                        System.out.println("Pressione ENTER para continuar...");
                         sc.nextLine();
                         break;
                     }
@@ -148,7 +148,7 @@ public class App {
                     senha = sc.nextLine();
 
                     cad.cadastrarProprietario(proprietarios, nome, email, senha);
-                    System.out.println("Pressino ENTER para continuar...");
+                    System.out.println("Pressione ENTER para continuar...");
                     sc.nextLine();
                     break;    
 
@@ -217,7 +217,7 @@ public class App {
                 default:
                     helpers.clearScreen();
                     helpers.printError(logos);
-                    System.out.println("Pressino ENTER para continuar...");
+                    System.out.println("Pressione ENTER para continuar...");
                     sc.nextLine();
                     break;
             }
@@ -306,7 +306,7 @@ public class App {
                 default:
                     helpers.clearScreen();
                     helpers.printError(logos);
-                    System.out.println("Pressino ENTER para continuar...");
+                    System.out.println("Pressione ENTER para continuar...");
                     sc.nextLine();
                     break;
             }

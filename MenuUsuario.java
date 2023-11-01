@@ -31,8 +31,12 @@ public class MenuUsuario {
         
         // Método que cria uma reserva
         Scanner sc = new Scanner(System.in);
-        System.out.print("Digite o ID da propriedade: ");
+        System.out.print("Digite o ID da propriedade (digite '-1' para sair): ");
         int id = helpers.getInt();
+        if (id == -1) {
+            System.out.println("Reserva cancelada!\n");
+            return;
+        }
         int index = 0;
         boolean achado = false;
         for (Propriedade propriedade : propriedades) {
@@ -102,7 +106,7 @@ public class MenuUsuario {
         int id = 0;
 
         while (id != -1) {
-            System.out.print("Digite o ID da propriedade que deseja finalizar a reserva ou digite \"-1\" para continuar: ");
+            System.out.print("Digite o ID da propriedade que deseja finalizar a reserva ou digite \"-1\" para sair: ");
             id = helpers.getInt();
             if (id == -1) {
                 break;
